@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Medical Histories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Patient</th>
+      <th>Date</th>
+      <th>Incident type</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medical_histories.each do |medical_history| %>
+      <tr>
+        <td><%= medical_history.patient_id %></td>
+        <td><%= medical_history.date %></td>
+        <td><%= medical_history.incident_type %></td>
+        <td><%= medical_history.comment %></td>
+        <td><%= link_to 'Show', medical_history %></td>
+        <td><%= link_to 'Edit', edit_medical_history_path(medical_history) %></td>
+        <td><%= link_to 'Destroy', medical_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Medical history', new_medical_history_path %>

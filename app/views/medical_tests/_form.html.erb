@@ -1,0 +1,85 @@
+<%= form_for(@medical_test) do |f| %>
+  <% if @medical_test.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medical_test.errors.count, "error") %> prohibited this medical_test from being saved:</h2>
+
+      <ul>
+      <% @medical_test.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :place %><br>
+    <%= f.text_field :place %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :patient_id %><br>
+    <%= f.number_field :patient_id %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :tobacco %><br>
+    <%= f.text_field :tobacco %>
+  </div>
+  <div class="field">
+    <%= f.label :alcohol %><br>
+    <%= f.text_field :alcohol %>
+  </div>
+  <div class="field">
+    <%= f.label :heart_rate %><br>
+    <%= f.number_field :heart_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :fetal_heart_sound %><br>
+    <%= f.text_field :fetal_heart_sound %>
+  </div>
+  <div class="field">
+    <%= f.label :uterus_contraction %><br>
+    <%= f.text_field :uterus_contraction %>
+  </div>
+  <div class="field">
+    <%= f.label :temperature %><br>
+    <%= f.text_field :temperature %>
+  </div>
+  <div class="field">
+    <%= f.label :sugar %><br>
+    <%= f.text_field :sugar %>
+  </div>
+  <div class="field">
+    <%= f.label :blood_pressure %><br>
+    <%= f.text_field :blood_pressure %>
+  </div>
+  <div class="field">
+    <%= f.label :folic_acid_supplimentation_level %><br>
+    <%= f.text_field :folic_acid_supplimentation_level %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :hemoglobin %><br>
+    <%= f.number_field :hemoglobin %>
+  </div>
+  <div class="field">
+    <%= f.label :platelet_count %><br>
+    <%= f.number_field :platelet_count %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

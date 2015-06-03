@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  dob: 2015-06-03
+  id_type: MyString
+  id_num: MyString
+  place: MyString
+  pincode: 1
+  district: MyString
+  state: MyString
+  blood_type: MyString
+
+two:
+  name: MyString
+  dob: 2015-06-03
+  id_type: MyString
+  id_num: MyString
+  place: MyString
+  pincode: 1
+  district: MyString
+  state: MyString
+  blood_type: MyString

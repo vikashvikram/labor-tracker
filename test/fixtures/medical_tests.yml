@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2015-06-03
+  place: MyString
+  user_id: 1
+  patient_id: 1
+  weight: 9.99
+  tobacco: 9.99
+  alcohol: 9.99
+  heart_rate: 1
+  fetal_heart_sound: MyString
+  uterus_contraction: MyString
+  temperature: 9.99
+  sugar: 9.99
+  blood_pressure: MyString
+  folic_acid_supplimentation_level: MyString
+  state: MyString
+  hemoglobin: 1
+  platelet_count: 1
+
+two:
+  date: 2015-06-03
+  place: MyString
+  user_id: 1
+  patient_id: 1
+  weight: 9.99
+  tobacco: 9.99
+  alcohol: 9.99
+  heart_rate: 1
+  fetal_heart_sound: MyString
+  uterus_contraction: MyString
+  temperature: 9.99
+  sugar: 9.99
+  blood_pressure: MyString
+  folic_acid_supplimentation_level: MyString
+  state: MyString
+  hemoglobin: 1
+  platelet_count: 1

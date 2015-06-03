@@ -1,0 +1,40 @@
+<% unless user_signed_in? %>
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+<%else%>
+<div class="page-header">
+  <h2>Welcome <%= current_user.name%></h2>
+</div>
+<div class="row">
+	<div class="col-lg-3">
+		<div class="thumbnail" style="border: none">
+			<%= image_tag 'doctor.jpg' %>
+			<div class="caption">
+				<p><b> Name: </b> <%= current_user.name%></p>
+				<p><b> Date of Birth: </b> <%= current_user.dob.strftime('%B %d, %Y')%></p>
+				<p><b> Hospital: </b> <%= current_user.hospital%></p>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Patients</h3>
+			 </div>
+  			<div class="panel-body">
+    			<%@patients.each do |patient| %>
+				<div class="col-lg-4">
+					<div class="thumbnail">
+						<%=link_to image_tag('anisha.jpg'),  @patients.first%>
+						<div class="caption">
+							<p><b> Name: </b> <%= patient.name%></p>
+							<p><b> Place: </b> <%= "#{patient.district}, #{patient.state}"%></p>
+						</div>
+					</div>
+				</div>
+				<%end%>
+  			</div>
+		</div>
+	</div>
+</div>
+<%end%>

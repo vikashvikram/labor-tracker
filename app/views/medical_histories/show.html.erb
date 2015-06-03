@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @medical_history.patient_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @medical_history.date %>
+</p>
+
+<p>
+  <strong>Incident type:</strong>
+  <%= @medical_history.incident_type %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @medical_history.comment %>
+</p>
+
+<%= link_to 'Edit', edit_medical_history_path(@medical_history) %> |
+<%= link_to 'Back', medical_histories_path %>

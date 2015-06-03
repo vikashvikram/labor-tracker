@@ -1,0 +1,52 @@
+<div class="page-header">
+  <h1>Signup <small><%= render "devise/shared/links" %></small></h1>
+</div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal"}) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <label for="Name" class="col-sm-2 control-label">Name:</label>
+    <div class="col-sm-10">
+      <%= f.text_field :name, autofocus: true, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="Email" class="col-sm-2 control-label">Email:</label>
+    <div class="col-sm-10">
+      <%= f.email_field :email, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="DateOfBirth" class="col-sm-2 control-label">Date of birth:</label>
+    <div class="col-sm-10">
+      <%= f.date_field :dob, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="Hospital" class="col-sm-2 control-label">Hospital:</label>
+    <div class="col-sm-10"><%= f.text_field :hospital, class: "form-control" %></div>
+  </div>
+
+  <div class="form-group">
+    <label for="Password" class="col-sm-2 control-label">Password:</label>
+    <div class="col-sm-10"><%= f.password_field :password, autocomplete: "off", class: "form-control" %></div>
+  </div>
+
+  <div class="form-group">
+    <label for="PasswordConfirmation" class="col-sm-2 control-label">Password confirmation:</label>
+    <div class="col-sm-10"><%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %></div>
+  </div>
+
+  <div class="form-group">
+    <label for="Gender" class="col-sm-2 control-label">Gender:</label>
+    <div class="col-sm-10"><%= f.select :gender, [['Male', 'male'], ['Female', 'female']], class: "form-control" %></div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10"><%= f.submit "Sign up", class: "btn btn-default btn-lg" %></div>
+  </div>
+<% end %>

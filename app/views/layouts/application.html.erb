@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LaborTracker</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="http://js.pusher.com/2.2/pusher.min.js"></script>
+  <script src="http://cdn.zingchart.com/zingchart.min.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<%= link_to "Labor Tracker", root_url, class: "navbar-brand"%>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<%if user_signed_in? %>
+					<li><a href="#" class="navbar-link">Welcome <%= current_user.name %></a></li>
+					<li class="divider"></li>
+					<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+					<%else%>
+					<li><a href="#" class="navbar-link">Welcome Guest</a></li>
+					<li class="divider"></li>
+					<li><%= link_to "Login", new_user_session_path %></li>
+					<%end%>
+				</ul>
+				</div>
+				</div>
+			</nav>
+	<div class="container">
+		<div class="row">
+
+		    <%= yield %>
+
+
+	    </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+json.extract! @medical_test, :id, :date, :place, :user_id, :patient_id, :weight, :tobacco, :alcohol, :heart_rate, :fetal_heart_sound, :uterus_contraction, :temperature, :sugar, :blood_pressure, :folic_acid_supplimentation_level, :state, :hemoglobin, :platelet_count, :created_at, :updated_at

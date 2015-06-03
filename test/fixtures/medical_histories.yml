@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_id: 1
+  date: 2015-06-03
+  incident_type: MyString
+  comment: MyString
+
+two:
+  patient_id: 1
+  date: 2015-06-03
+  incident_type: MyString
+  comment: MyString
