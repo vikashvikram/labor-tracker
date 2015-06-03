@@ -1,6 +1,10 @@
 <% unless user_signed_in? %>
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="col-lg-9 col-lg-offset-1"><%= image_tag('image.jpg') %><div>
+<div class="jumbotron">
+  <h1>Labor Tracker</h1>
+  <p>Welcome to the new age Labor Tracking system.</p>
+  <p><%=link_to "Login", new_user_session_path, class:  "btn btn-default btn-lg"%></p>
+</div>
 <%else%>
 <div class="page-header">
   <h2>Welcome <%= current_user.name%></h2>
@@ -8,7 +12,7 @@
 <div class="row">
 	<div class="col-lg-3 col-md-3 col-sm-3">
 		<div class="thumbnail" style="border: none">
-			<%= image_tag 'doctor.jpg' %>
+			<%= image_tag "#{current_user.name.split(' ').join.downcase}.png" %>
 			<div class="caption">
 				<p><b> Name: </b> <%= current_user.name%></p>
 				<p><b> Date of Birth: </b> <%= current_user.dob.strftime('%B %d, %Y')%></p>
@@ -25,7 +29,7 @@
     			<%@patients.each do |patient| %>
 				<div class="col-lg-4 col-md-6 col-sm-6">
 					<div class="thumbnail">
-						<%=link_to image_tag('anisha.jpg'),  @patients.first%>
+						<%=link_to image_tag("#{patient.name.downcase}.png", style:"height: 200px"),  patient%>
 						<div class="caption">
 							<p><b> Name: </b> <em><%= patient.name%></em></p>
 							<p><b> Place: </b> <%= "#{patient.district}, #{patient.state}"%></p>

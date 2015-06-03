@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="thumbnail" style="border: none">
-      <%= image_tag 'anisha.jpg' %>
+      <%= image_tag "#{@patient.name.downcase}.png" %>
       <div class="caption">
         <p><b> Name: </b> <%= @patient.name%></p>
         <p><b> Date of Birth: </b> <%= @patient.dob.strftime('%B %d, %Y')%></p>
@@ -93,7 +93,7 @@
           dps.push({x: xVal,y: yVal});
           xVal = xVal+0.2;
           
-          if (dps.length >  10 )
+          if (dps.length >  50 )
           {
             dps.shift();        
           }
@@ -108,13 +108,22 @@
       text: "Heartbeat Live Data"
     },
     axisX: {            
-      title: "Time(sec)"
+      title: "",
+      labelFontColor: "white",
+      tickColor: "white"
     },
     axisY: {            
-      title: "beat"
+      title: "",
+      gridThickness: 0,
+      labelFontColor: "white",
+      tickColor: "white"
+    },
+    toolTip:{
+      enabled: false
     },
     data: [{
       type: "line",
+      markerType: "none",
       dataPoints : dps
     }]
   });
@@ -146,7 +155,7 @@
 
   pusher.connection.bind('connected', function() {
     //$('div#status').text('Real time is go!');
-    alert('connected');
+    //alert('connected');
     //document.getElementById('status').innerHTML = "Connected";
   });
 

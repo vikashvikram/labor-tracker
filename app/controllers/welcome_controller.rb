@@ -4,17 +4,17 @@ class WelcomeController < ApplicationController
   end
 
   def hello_world(message = "hello world")
-  	Pusher.trigger('private-test_channel', 'ping', {:message => message})
+  	Pusher.trigger('heartbeat', 'beat', {:value => 0})
   end
 
   def push_chart(xVal = "1", yVal = "1")
   	xVal = 1
   	yVal = 1
-  	10.times do
-  		Pusher.trigger('private-test_channel', 'chart', {:xVal => xVal, :yVal => yVal})
+  	100.times do
+  		Pusher.trigger('heartbeat', 'beat', {:value => xVal})
   		xVal += 1
   		yVal += 1
-  		sleep 1
+  		sleep 0.5
   	end
   end
 end
