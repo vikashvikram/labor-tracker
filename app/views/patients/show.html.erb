@@ -3,7 +3,7 @@
   <h2><%= @patient.name%></h2>
 </div>
 <div class="row">
-  <div class="col-lg-3">
+  <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="thumbnail" style="border: none">
       <%= image_tag 'anisha.jpg' %>
       <div class="caption">
@@ -16,7 +16,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-9">
+  <div class="col-lg-9 col-md-9 col-sm-9">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Medical Profile and History of <%= @patient.name%></h3>
@@ -52,7 +52,7 @@
             <div class="panel-body">
               <% tests = @patient.medical_tests%>
               <% tests.each do |t| %>
-              <div class="col-lg-12">
+              <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="thumbnail" style="border: none">
                   <div class="caption">
                     <div class="page-header">
@@ -88,9 +88,10 @@
 </div>
 <script>
     var dps = [{x: 0, y: 0}]; 
-    var updateChart = function (xVal, yVal) {
+    var updateChart = function (yVal) {
           
           dps.push({x: xVal,y: yVal});
+          xVal = xVal+0.2;
           
           if (dps.length >  10 )
           {
@@ -104,13 +105,13 @@
 
   var chart = new CanvasJS.Chart("chartContainer",{
     title :{
-      text: "Live Data"
+      text: "Heartbeat Live Data"
     },
     axisX: {            
-      title: "Axis X Title"
+      title: "Time(sec)"
     },
     axisY: {            
-      title: "Units"
+      title: "beat"
     },
     data: [{
       type: "line",
@@ -120,15 +121,23 @@
 
   chart.render();
   var pusher = new Pusher('<%= Pusher.key%>');
-  var channel = pusher.subscribe('private-test_channel');
+  //var channel = pusher.subscribe('private-test_channel');
+  var newChannel = pusher.subscribe('heartbeat');
+  var xVal = 0;
 
-  channel.bind('ping', function(data) {
-    alert(data.message);
-  });
+  // channel.bind('ping', function(data) {
+  //   alert(data.message);
+  // });
 
-  channel.bind('chart', function(data) {
+  // channel.bind('chart', function(data) {
+  //   //alert(data.message);
+  //   updateChart(parseInt(data.xVal), parseInt(data.yVal));
+  // });
+
+  newChannel.bind('beat', function(data) {
     //alert(data.message);
-    updateChart(parseInt(data.xVal), parseInt(data.yVal));
+    console.log(data.value);
+    updateChart(parseInt(data.value));
   });
 
   pusher.connection.bind( 'error', function( err ) { 
