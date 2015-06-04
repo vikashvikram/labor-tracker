@@ -82,11 +82,32 @@
               <div id="chartContainer" style="height: 300px; width: 100%;"></div>
             </div>
           </div>
+          <!-- <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">RealTime Location</h4>
+            </div>
+            <div class="panel-body">
+              <div id="map" style="height: 300px; width: 100%;"></div>
+            </div>
+          </div> -->
+</iframe>
         </div>
     </div>
   </div>
 </div>
 <script>
+
+    var showPosition = function(latt, longt) {
+        //var latlon=position.coords.latitude+","+position.coords.longitude;
+        alert("hello");
+        var latlon=latt+","+longt;
+
+        var img_url="http://maps.googleapis.com/maps/api/staticmap?center="
+        +latlon+"&zoom=14&size=400x300&sensor=false";
+        document.getElementById("map").innerHTML="<img src='"+img_url+"'>";
+    }
+
+
     var dps = [{x: 0, y: 0}]; 
     var updateChart = function (yVal) {
           
@@ -107,6 +128,7 @@
     title :{
       text: "Heartbeat Live Data"
     },
+    dataPointMaxWidth: 1,
     axisX: {            
       title: "",
       labelFontColor: "white",
@@ -132,6 +154,7 @@
   var pusher = new Pusher('<%= Pusher.key%>');
   //var channel = pusher.subscribe('private-test_channel');
   var newChannel = pusher.subscribe('heartbeat');
+  //var mapChannel = pusher.subscribe('realtimemap');
   var xVal = 0;
 
   // channel.bind('ping', function(data) {
@@ -149,13 +172,19 @@
     updateChart(parseInt(data.value));
   });
 
+  // mapChannel.bind('locate', function(data) {
+  //   //alert(data.message);
+  //   //console.log(data.value);
+  //   showPosition(data.latitude, data.longitude);
+  // });
+
   pusher.connection.bind( 'error', function( err ) { 
     alert('>>> detected limit error');
   });
 
   pusher.connection.bind('connected', function() {
     //$('div#status').text('Real time is go!');
-    //alert('connected');
+    alert('connected');
     //document.getElementById('status').innerHTML = "Connected";
   });
 
