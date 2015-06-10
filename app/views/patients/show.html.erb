@@ -97,17 +97,6 @@
 </div>
 <script>
 
-    var showPosition = function(latt, longt) {
-        //var latlon=position.coords.latitude+","+position.coords.longitude;
-        alert("hello");
-        var latlon=latt+","+longt;
-
-        var img_url="http://maps.googleapis.com/maps/api/staticmap?center="
-        +latlon+"&zoom=14&size=400x300&sensor=false";
-        document.getElementById("map").innerHTML="<img src='"+img_url+"'>";
-    }
-
-
     var dps = [{x: 0, y: 0}]; 
     var updateChart = function (yVal) {
           
@@ -151,46 +140,18 @@
   });
 
   chart.render();
-  var pusher = new Pusher('<%= Pusher.key%>');
-  //var channel = pusher.subscribe('private-test_channel');
-  var newChannel = pusher.subscribe('heartbeat');
-  //var mapChannel = pusher.subscribe('realtimemap');
   var xVal = 0;
 
-  // channel.bind('ping', function(data) {
-  //   alert(data.message);
-  // });
+  var source = new EventSource('/event');
 
-  // channel.bind('chart', function(data) {
-  //   //alert(data.message);
-  //   updateChart(parseInt(data.xVal), parseInt(data.yVal));
-  // });
-
-  newChannel.bind('beat', function(data) {
-    //alert(data.message);
-    console.log(data.value);
-    updateChart(parseInt(data.value));
+  source.addEventListener("message<%= @patient.id%>", function(e){
+    console.log("Received a message<%= @patient.id%>:", e.data);
+    updateChart(parseInt($.parseJSON(e.data).value));
   });
 
-  // mapChannel.bind('locate', function(data) {
-  //   //alert(data.message);
-  //   //console.log(data.value);
-  //   showPosition(data.latitude, data.longitude);
-  // });
-
-  pusher.connection.bind( 'error', function( err ) { 
-    alert('>>> detected limit error');
-  });
-
-  pusher.connection.bind('connected', function() {
-    //$('div#status').text('Real time is go!');
-    alert('connected');
-    //document.getElementById('status').innerHTML = "Connected";
-  });
-
-  pusher.connection.bind('connecting_in', function() {
-    //$('div#status').text('Real time is go!');
-    alert('connecting_in');
+  source.addEventListener('finished', function(e){
+    console.log('Close:', e.data);
+    source.close();
   });
   
 </script>
