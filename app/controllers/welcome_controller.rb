@@ -49,6 +49,8 @@ class WelcomeController < ApplicationController
     end
   rescue IOError
     logger.info "stream is closed"
+  rescue ActionController::Live::ClientDisconnected
+    logger.info "stream connection closed"
   ensure
     sse.close
   end

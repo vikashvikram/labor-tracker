@@ -81,34 +81,25 @@
             <div class="panel-body">
               <div id="chartContainer" style="height: 300px; width: 100%;"></div>
             </div>
-          </div>
-          <!-- <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">RealTime Location</h4>
-            </div>
-            <div class="panel-body">
-              <div id="map" style="height: 300px; width: 100%;"></div>
-            </div>
-          </div> -->
-</iframe>
+          </div
         </div>
     </div>
   </div>
 </div>
 <script>
 
-    var dps = [{x: 0, y: 0}]; 
-    var updateChart = function (yVal) {
-          
-          dps.push({x: xVal,y: yVal});
-          xVal = xVal+0.2;
-          
-          if (dps.length >  50 )
-          {
-            dps.shift();        
-          }
+  var dps = [{x: 0, y: 0}]; 
+  var updateChart = function (yVal) {
+        
+    dps.push({x: xVal,y: yVal});
+    xVal = xVal+0.2;
+    
+    if (dps.length >  50 )
+    {
+      dps.shift();        
+    }
 
-          chart.render();   
+    chart.render();   
 
   };
 
